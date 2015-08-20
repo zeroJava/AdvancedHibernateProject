@@ -7,11 +7,11 @@
 <hibernate-mapping package="basicApplication.dataClass">
 
 	<class name="CountryHibernate" table="country">
-		<id name="countryID" type="integer" column="country_Id">
-			<generator class="increment"></generator>
+		<id name="name" type="string" column="name">
+			<!-- <generator class="increment"></generator> -->
 		</id>
-		<property name="countryName" type="string" column="country" />
-		<property name="update" type="timestamp" column="last_update" />
+		<property name="continent" type="string" column="continent" />
+		<property name="population" type="integer" column="population" />
 		
 		<!--<set name="cities" table="city_country">
 			<key column="cityID" />

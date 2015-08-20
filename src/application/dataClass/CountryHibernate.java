@@ -10,9 +10,9 @@ import javax.persistence.Id;
 public class CountryHibernate {
 	
 	@Id
-	private int countryID;
-	private String countryName;
-	private int update;
+	private String name;
+	private String continent;
+	private int population;
 	
 	private Set<String> cities = new HashSet<String>();
 	
@@ -23,37 +23,37 @@ public class CountryHibernate {
 	
 	public CountryHibernate(String name)
 	{
-		this.setCountryName(name);
+		this.setName(name);
 	}
 	
-	public int getcountryID()
+	public String getName()
 	{
-		return countryID;
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public String getContinent()
+	{
+		return continent;
 	}
 	
-	public void setcountryID(int iD)
+	public void setContinent(String continent)
 	{
-		countryID = iD;
+		this.continent = continent;
+	}
+	
+	public int getPopulation()
+	{
+		return population;
 	}
 
-	public String getCountryName()
+	public void setPopulation(int population)
 	{
-		return countryName;
-	}
-
-	public void setCountryName(String countryName)
-	{
-		this.countryName = countryName;
-	}
-
-	public int getUpdate()
-	{
-		return update;
-	}
-
-	public void setUpdate(int update)
-	{
-		this.update = update;
+		this.population = population;
 	}
 
 	public Set<String> getCities()

@@ -1,18 +1,21 @@
 package application.dataClass;
 
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "city")
 public class CityHibernate {
 	
 	@Id
 	private int cityID;
+	@Column()
 	private String name;
-	private int countryID;
-	private Date update;
+	private int countryName;
+	private int population;
+	//private Date update;
 	
 	public CityHibernate()
 	{
@@ -44,23 +47,23 @@ public class CityHibernate {
 		this.name = name;
 	}
 	
-	public int getCountryID()
+	public int getCountryName()
 	{
-		return countryID;
+		return countryName;
 	}
 	
-	public void setCountryID(int countryID)
+	public void setCountryName(int countryID)
 	{
-		this.countryID = countryID;
+		this.countryName = countryID;
 	}
 	
-	public Date getUpdate()
+	public int getPopulation()
 	{
-		return update;
+		return population;
 	}
 	
-	public void setUpdate(Date update)
+	public void setPopulation(int population)
 	{
-		this.update = update;
+		this.population = population;
 	}
 }
