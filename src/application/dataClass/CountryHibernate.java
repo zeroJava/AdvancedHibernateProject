@@ -3,10 +3,13 @@ package application.dataClass;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "country")
 public class CountryHibernate {
 	
 	@Id
@@ -26,6 +29,7 @@ public class CountryHibernate {
 		this.setName(name);
 	}
 	
+	@Column(name = "")
 	public String getName()
 	{
 		return name;
@@ -65,4 +69,28 @@ public class CountryHibernate {
 	{
 		this.cities = cities;
 	}
+	
+	public String toString()
+	{
+		return (this.name + " " + this.continent + " " + this.population);
+	}
+	
+	public boolean equals(CountryHibernate object)
+	{
+		return (this.name.equals(object.getName()) && this.continent.equals(object.getContinent()) 
+					&& this.population == object.getPopulation() );
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cities == null) ? 0 : cities.hashCode());
+		result = prime * result
+				+ ((continent == null) ? 0 : continent.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + population;
+		return result;
+	}	
 }
