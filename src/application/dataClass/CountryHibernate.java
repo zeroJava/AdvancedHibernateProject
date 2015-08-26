@@ -12,7 +12,6 @@ import javax.persistence.Table;
 @Table(name = "country")
 public class CountryHibernate {
 	
-	@Id
 	private String name;
 	private String continent;
 	private int population;
@@ -29,7 +28,8 @@ public class CountryHibernate {
 		this.setName(name);
 	}
 	
-	@Column(name = "")
+	@Id
+	@Column(name = "name")
 	public String getName()
 	{
 		return name;
@@ -40,6 +40,7 @@ public class CountryHibernate {
 		this.name = name;
 	}
 
+	@Column(name = "continent")
 	public String getContinent()
 	{
 		return continent;
@@ -50,6 +51,7 @@ public class CountryHibernate {
 		this.continent = continent;
 	}
 	
+	@Column(name = "population")
 	public int getPopulation()
 	{
 		return population;

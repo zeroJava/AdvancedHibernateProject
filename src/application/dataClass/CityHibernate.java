@@ -2,6 +2,7 @@ package application.dataClass;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,7 +10,6 @@ import javax.persistence.Table;
 @Table(name = "city")
 public class CityHibernate {
 	
-	@Id
 	private int cityID;
 	private String name;
 	private String countryName;
@@ -26,6 +26,8 @@ public class CityHibernate {
 		setName(name);
 	}
 	
+	@Id
+	@GeneratedValue
 	public int getcityID()
 	{
 		return cityID;
