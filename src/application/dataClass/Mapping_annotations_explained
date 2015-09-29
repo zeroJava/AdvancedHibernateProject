@@ -1,0 +1,24 @@
+ Mapping annotations explained
+ 
+ 
+ @Entity ---- >
+ 
+ An @Entity means that this class is able to persist, therefore a table showed exist in the database, and that this
+ class will be a class representation of the table in the database.
+ 
+ @Table(name=) ---- >
+ 
+ The @Table(name =) annotation allows us to decide which table to connect to.
+ 
+ @ID --- >
+ 
+ This connects the varaiable that is the primary key of the class to the primary of the table.
+ 
+ @Column(name=) --- > 
+ 
+ This annotation allows us to connect a the variable to a particular column. Without using the @column(), hibernate
+ will automatically create copyies of the variable that will become the columns in the table.
+ 
+ 
+ 
+ http://www.javaworld.com/article/2077817/java-se/understanding-jpa-part-1-the-object-oriented-paradigm-of-data-persistence.html
