@@ -6,19 +6,26 @@
  An @Entity means that this class is able to persist, therefore a table showed exist in the database, and that this
  class will be a class representation of the table in the database.
  
+ The @Entity is the most important element, as it makes the class persistable. The rest of the annotations are optional.
+ 
  @Table(name=) ---- >
  
  The @Table(name =) annotation allows us to decide which table to connect to.
  
  @ID --- >
  
- This connects the varaiable that is the primary key of the class to the primary of the table.
+ This connects the variable that is the primary key of the class to the primary of the table. Hibernate must declare an
+ identifier to the primary key to the database table, this is done via @id in annotation and 
+ <id name="ID" type= "integer" column="actor_id"> in hbm.xml.
  
  @Column(name=) --- > 
  
  This annotation allows us to connect a the variable to a particular column. Without using the @column(), hibernate
- will automatically create copyies of the variable that will become the columns in the table.
+ will automatically create copies of the variable that will become the columns in the table.
  
+ I prefer connect our class property (variable) with the columns in our database, by assigning the @Column annotation
+ to the variables getter method.
  
  
  http://www.javaworld.com/article/2077817/java-se/understanding-jpa-part-1-the-object-oriented-paradigm-of-data-persistence.html
+ http://www.javatpoint.com/hibernate-tutorial

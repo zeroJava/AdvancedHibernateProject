@@ -50,7 +50,7 @@ public class ClientHibernate {
 		this.ID = ID;
 	}
 	
-	@Column(name = "firstName")
+	@Column(name = "firstName", nullable = false)
 	public String getFirstName()
 	{
 		return firstName;
@@ -61,7 +61,7 @@ public class ClientHibernate {
 		this.firstName = firstName;
 	}
 	
-	@Column(name = "lastName")
+	@Column(name = "lastName", nullable = false)
 	public String getLastName()
 	{
 		return lastName;
@@ -72,7 +72,7 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
-	@Column(name = "city_id")
+	@Column(name = "city_id", nullable = false)
 	public int getCityID()
 	{
 		return cityID;
@@ -84,7 +84,7 @@ public class ClientHibernate {
 	}
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "updated")
+	@Column(name = "updated", nullable = false)
 	public Date getDate()
 	{
 		return update;
