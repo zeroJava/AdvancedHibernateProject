@@ -9,7 +9,9 @@ import org.junit.Test;
 
 public class ConfigurationTest {
 
+	@SuppressWarnings("unused")
 	private SessionFactory factory;
+	@SuppressWarnings("unused")
 	private Session session;
 	
 	@Before
