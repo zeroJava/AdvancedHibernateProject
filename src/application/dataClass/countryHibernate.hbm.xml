@@ -13,10 +13,11 @@
 		<property name="continent" type="string" column="continent" />
 		<property name="population" type="integer" column="population" />
 		
-		<!--<set name="cities" table="city_country">
+		<set name="cities" table="city_country">
 			<key column="cityID" />
-			<one-to-many/>
-		</set>-->
+			<one-to-many class="CityHibernate" />
+		</set>
+		
 	</class>
 
 </hibernate-mapping>

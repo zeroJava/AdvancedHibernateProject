@@ -1,29 +1,39 @@
 package application.testcase.inititalTest;
 
-import static org.junit.Assert.*;
-
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.junit.Before;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 
 public class ConfigurationTest {
 
-	@SuppressWarnings("unused")
+	private Configuration configuration;
 	private SessionFactory factory;
-	@SuppressWarnings("unused")
 	private Session session;
 	
-	@Before
-	public void setup()
+	@Test
+	public void testConfiguarion()
 	{
-		//factory = HibernateUtilies.getSessionfactory();
+		try
+		{
+			configuration = new Configuration().configure();
+		}
+		catch(HibernateException he)
+		{
+			System.out.println(he.getMessage());
+		}
 	}
 	
 	@Test
 	public void test()
 	{
-		fail("Not yet implemented");
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		factory = configuration.buildSessionFactory(serviceRegistry);
+		session = factory.openSession();
+		session.close();
 	}
 
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+ <hibernate-configuration>
+ 
+ 	<session-factory>
+ 	
+ 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/jdata</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">100692</property>
+		
+		<!-- JDBC connection pool (use the built-in) 
+		Here we determine how much databases can be connected at a given time -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- SQL dialect 
+		Here we decide which SQL vendor will be providing the database. So image SQL is a language,
+		then MySQL would considered a dialect of the SQL language. -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+		<!-- Echo all executed SQL to stdout
+		This will write the SQL when action like getting or adding data to the database -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property> 
+
+		<!-- Names the annotated entity class
+		Here list of reference containing the location of hibernate mapping files -->
+ 	
+ 	</session-factory>
+ 
+ </hibernate-configuration>
