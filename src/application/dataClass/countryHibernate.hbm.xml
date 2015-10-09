@@ -14,7 +14,7 @@
 		<property name="population" type="integer" column="population" />
 		
 		<set name="cities" table="city_country">
-			<key column="cityID" />
+			<key column="country" />
 			<one-to-many class="CityHibernate" />
 		</set>
 		

@@ -3,13 +3,14 @@ package application.testcase.inititalTest;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
+
+import application.factoryEngine.Factoryengine;
 
 public class ConfigurationTest {
 
+	@SuppressWarnings("unused")
 	private Configuration configuration;
 	private SessionFactory factory;
 	private Session session;
@@ -28,12 +29,17 @@ public class ConfigurationTest {
 	}
 	
 	@Test
+	public void testUtil()
+	{
+		Factoryengine.createSessionFactory();
+		factory = Factoryengine.getFactory();
+	}
+
+	@Test
 	public void test()
 	{
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		factory = configuration.buildSessionFactory(serviceRegistry);
+		factory = Factoryengine.getFactory();
 		session = factory.openSession();
 		session.close();
 	}
-
 }
