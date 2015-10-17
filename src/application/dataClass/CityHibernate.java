@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,7 +14,7 @@ public class CityHibernate {
 	
 	private int cityID;
 	private String name;
-	private String country;
+	private CountryHibernate country;
 	private int population;
 	//private Date update;
 	
@@ -25,6 +26,12 @@ public class CityHibernate {
 	public CityHibernate(String name)
 	{
 		setName(name);
+	}
+	
+	public CityHibernate(String name, int population)
+	{
+		setName(name);
+		setPopulation(population);
 	}
 	
 	@Id
@@ -41,7 +48,6 @@ public class CityHibernate {
 	}
 	
 	@Column(name = "name") 
-	@ManyToOne
 	public String getName()
 	{
 		/* @column annotation links the variable from the persistant class to the sql table. */
@@ -57,13 +63,15 @@ public class CityHibernate {
 		this.name = name;
 	}
 	
+	@ManyToOne
 	@Column(name = "country")
-	public String getCountry()
+	@JoinColumn(name = "name")
+	public CountryHibernate getCountry()
 	{
 		return country;
 	}
 	
-	public void setCountry(String country)
+	public void setCountry(CountryHibernate country)
 	{
 		this.country = country;
 	}
