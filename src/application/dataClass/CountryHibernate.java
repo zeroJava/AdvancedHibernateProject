@@ -18,7 +18,7 @@ public class CountryHibernate {
 	private String continent;
 	private int population;
 	
-	private Set<String> cities = new HashSet<String>();
+	private Set<CityHibernate> cities = new HashSet<CityHibernate>();
 	
 	public CountryHibernate()
 	{
@@ -64,15 +64,15 @@ public class CountryHibernate {
 		this.population = population;
 	}
 
+	// TODO append the city and country class to make it bidirectional 
 	@OneToMany
-	@JoinColumn(name="name")
-	// cascade
-	public Set<String> getCities()
+	@JoinColumn(name="name") // the "name" indicates the column name
+	public Set<CityHibernate> getCities()
 	{
 		return cities;
 	}
 
-	public void setCities(Set<String> cities)
+	public void setCities(Set<CityHibernate> cities)
 	{
 		this.cities = cities;
 	}

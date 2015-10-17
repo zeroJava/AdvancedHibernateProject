@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +13,7 @@ public class CityHibernate {
 	
 	private int cityID;
 	private String name;
-	private String countryName;
+	private String country;
 	private int population;
 	//private Date update;
 	
@@ -28,6 +29,7 @@ public class CityHibernate {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "city_id")
 	public int getcityID()
 	{
 		return cityID;
@@ -39,6 +41,7 @@ public class CityHibernate {
 	}
 	
 	@Column(name = "name") 
+	@ManyToOne
 	public String getName()
 	{
 		/* @column annotation links the variable from the persistant class to the sql table. */
@@ -55,14 +58,14 @@ public class CityHibernate {
 	}
 	
 	@Column(name = "country")
-	public String getCountryName()
+	public String getCountry()
 	{
-		return countryName;
+		return country;
 	}
 	
-	public void setCountryName(String countryName)
+	public void setCountry(String country)
 	{
-		this.countryName = countryName;
+		this.country = country;
 	}
 	
 	@Column(name = "population")
@@ -78,13 +81,13 @@ public class CityHibernate {
 	
 	public String toString()
 	{
-		return (this.cityID + " " + this.name + " " + this.countryName + " " + this.population);
+		return (this.cityID + " " + this.name + " " + this.country + " " + this.population);
 	}
 	
 	public boolean equals(CityHibernate object)
 	{
 		return (this.cityID == object.getcityID() && this.name.equals(object.getName()) 
-					&& this.countryName.equals(object.getCountryName()) && this.population == object.getPopulation() );
+					&& this.country.equals(object.getCountry()) && this.population == object.getPopulation() );
 	}
 
 	@Override
@@ -94,7 +97,7 @@ public class CityHibernate {
 		int result = 1;
 		result = prime * result + cityID;
 		result = prime * result
-				+ ((countryName == null) ? 0 : countryName.hashCode());
+				+ ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + population;
 		return result;

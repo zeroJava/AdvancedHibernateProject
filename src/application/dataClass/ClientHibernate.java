@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +19,7 @@ public class ClientHibernate {
 	private int ID;
 	private String firstName;
 	private String lastName;
-	private int cityID;
+	private CityHibernate cityID;
 	private Date update;
 	
 	public ClientHibernate()
@@ -31,7 +33,7 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
-	public ClientHibernate(String firstName, String lastName, int cityID)
+	public ClientHibernate(String firstName, String lastName, CityHibernate cityID)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -73,12 +75,14 @@ public class ClientHibernate {
 	}
 	
 	@Column(name = "city_id", nullable = false)
-	public int getCityID()
+	@ManyToOne
+	@JoinColumn(name = "cityID")
+	public CityHibernate getCityID()
 	{
 		return cityID;
 	}
 	
-	public void setCityID(int cityID)
+	public void setCityID(CityHibernate cityID)
 	{
 		this.cityID = cityID;
 	}
@@ -113,7 +117,7 @@ public class ClientHibernate {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ID;
-		result = prime * result + cityID;
+		result = prime * result + cityID.getcityID();
 		result = prime * result
 				+ ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result

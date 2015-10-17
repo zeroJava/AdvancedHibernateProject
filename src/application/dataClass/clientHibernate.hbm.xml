@@ -13,8 +13,15 @@
 		
 		<property name="firstName" type="string" column="firstName"></property>
 		<property name="lastName" type="string" column="lastName"></property>
-		<property name="cityID" type="integer" column="city_id"></property>
+		<!--  <property name="cityID" type="integer" column="city_id"></property> -->
 		<property name="update" type="timestamp" column="updated"></property>
+		
+		<many-to-one name="cityID" class="CityyHibernate"></many-to-one>
+		
+		<!--  http://levelup.lishman.com/hibernate/associations/many-to-one.php
+		http://www.mkyong.com/hibernate/hibernate-one-to-many-relationship-example/ 
+		https://howtoprogramwithjava.com/hibernate-onetomany-bidirectional-relationship/ -->
+		
 	</class>
 
 </hibernate-mapping>
