@@ -36,7 +36,7 @@ public class CityHibernate {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "city_id")
+	@Column(name = "CITY_ID")
 	public int getcityID()
 	{
 		return cityID;
@@ -47,7 +47,7 @@ public class CityHibernate {
 		this.cityID = iD;
 	}
 	
-	@Column(name = "name") 
+	@Column(name = "NAME") 
 	public String getName()
 	{
 		/* @column annotation links the variable from the persistant class to the sql table. */
@@ -64,8 +64,8 @@ public class CityHibernate {
 	}
 	
 	@ManyToOne
-	@Column(name = "country")
-	@JoinColumn(name = "name")
+	@Column(name = "COUNTRY")
+	@JoinColumn(name = "NAME")
 	public CountryHibernate getCountry()
 	{
 		return country;
@@ -76,7 +76,7 @@ public class CityHibernate {
 		this.country = country;
 	}
 	
-	@Column(name = "population")
+	@Column(name = "POPULATION")
 	public int getPopulation()
 	{
 		return population;

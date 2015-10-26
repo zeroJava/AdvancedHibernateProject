@@ -7,14 +7,14 @@
 <hibernate-mapping>
 
 	<class name="ClientHibernate" table="client">
-		<id name="ID" type="integer" column="id">
+		<id name="ID" type="integer" column="ID">
 			<generator class="increment"></generator>
 		</id>
 		
-		<property name="firstName" type="string" column="firstName"></property>
-		<property name="lastName" type="string" column="lastName"></property>
+		<property name="firstName" type="string" column="FIRSTNAME"></property>
+		<property name="lastName" type="string" column="LASTNAME"></property>
 		<!--  <property name="cityID" type="integer" column="city_id"></property> -->
-		<property name="update" type="timestamp" column="updated"></property>
+		<property name="update" type="timestamp" column="UPDATED"></property>
 		
 		<many-to-one name="cityID" class="CityyHibernate"></many-to-one>
 		

@@ -7,14 +7,14 @@
 <hibernate-mapping package="basicApplication.dataClass">
 
 	<class name="CountryHibernate" table="country">
-		<id name="name" type="string" column="name">
+		<id name="name" type="string" column="NAME">
 			<!-- <generator class="increment"></generator> -->
 		</id>
-		<property name="continent" type="string" column="continent" />
-		<property name="population" type="integer" column="population" />
+		<property name="continent" type="string" column="CONTINENT" />
+		<property name="population" type="integer" column="POPULATION" />
 		
 		<set name="cities" table="city">
-			<key column="country" />
+			<key column="COUNTRY" />
 			<one-to-many class="CityHibernate" />
 		</set>
 		

@@ -52,7 +52,7 @@ public class ClientHibernate {
 		this.ID = ID;
 	}
 	
-	@Column(name = "firstName", nullable = false)
+	@Column(name = "FIRSTNAME", nullable = false)
 	public String getFirstName()
 	{
 		return firstName;
@@ -63,7 +63,7 @@ public class ClientHibernate {
 		this.firstName = firstName;
 	}
 	
-	@Column(name = "lastName", nullable = false)
+	@Column(name = "LASTNAME", nullable = false)
 	public String getLastName()
 	{
 		return lastName;
@@ -74,9 +74,9 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
-	@Column(name = "city_id", nullable = false)
+	@Column(name = "CITY_ID", nullable = false)
 	@ManyToOne
-	@JoinColumn(name = "cityID")
+	@JoinColumn(name = "CITY_ID")
 	public CityHibernate getCityID()
 	{
 		return cityID;
@@ -88,7 +88,7 @@ public class ClientHibernate {
 	}
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "updated", nullable = false)
+	@Column(name = "UPDATED", nullable = false)
 	public Date getDate()
 	{
 		return update;

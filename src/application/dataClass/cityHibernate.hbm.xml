@@ -7,12 +7,12 @@
 <hibernate-mapping package="basicApplication.dataClass">
 
 	<class name="CityHibernate" table="city">
-		<id name="cityID" type="integer" column="city_Id">
+		<id name="cityID" type="integer" column="CITY_ID">
 			<generator class="increment"></generator>
 		</id>
-		<property name="name" type="string" column="name" />
-		<property name="country" type="string" column="country" />
-		<property name="population" type="integer" column="population" />
+		<property name="name" type="string" column="NAME" />
+		<property name="country" type="string" column="COUNTRY" />
+		<property name="population" type="integer" column="POPULATION" />
 		
 		<one-to-one name="city"></one-to-one> 
 		

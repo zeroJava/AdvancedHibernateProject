@@ -31,7 +31,7 @@ public class CountryHibernate {
 	}
 	
 	@Id
-	@Column(name = "name")
+	@Column(name = "NAME")
 	public String getName()
 	{
 		return name;
@@ -42,7 +42,7 @@ public class CountryHibernate {
 		this.name = name;
 	}
 
-	@Column(name = "continent")
+	@Column(name = "CONTINENT")
 	public String getContinent()
 	{
 		return continent;
@@ -53,7 +53,7 @@ public class CountryHibernate {
 		this.continent = continent;
 	}
 	
-	@Column(name = "population")
+	@Column(name = "POPULATION")
 	public int getPopulation()
 	{
 		return population;
@@ -66,7 +66,7 @@ public class CountryHibernate {
 
 	// TODO append the city and country class to make it bidirectional 
 	@OneToMany
-	@JoinColumn(name="name") // the "name" indicates the column name in the database table
+	@JoinColumn(name="COUNTRY") // the "name" indicates the column name in the database table
 	public Set<CityHibernate> getCities()
 	{
 		return cities;
