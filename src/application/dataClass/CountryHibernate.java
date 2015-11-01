@@ -66,9 +66,12 @@ public class CountryHibernate {
 
 	// TODO append the city and country class to make it bidirectional 
 	@OneToMany
-	@JoinColumn(name="COUNTRY") // the "name" indicates the column name in the database table
+	@JoinColumn(name="COUNTRY") // the "name" indicates the column name which is in the city database table
 	public Set<CityHibernate> getCities()
 	{
+		/* name indicate the column name we are going to use
+		 * the columns in question, would be the CityHibernate columns because that columns will the connecting point to the entity class/table.
+		 */
 		return cities;
 	}
 

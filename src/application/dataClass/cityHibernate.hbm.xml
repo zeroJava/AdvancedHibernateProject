@@ -14,8 +14,24 @@
 		<property name="country" type="string" column="COUNTRY" />
 		<property name="population" type="integer" column="POPULATION" />
 		
-		<one-to-one name="city"></one-to-one> 
+		<many-to-one name="country" column="COUNTRY" class="CountryHibernate"></many-to-one> 
+		<!-- 
+			name="country": we are referring to the variable in our entity class that is attached to this mapping file, in this case the entity class is CityHibernate.
+			column="COUNTRY": we are referring to the column in our table.
+			class="": is the entity that our variable will be referencing to.
+			We are not using <property> tag, because this columns in the table is a foreign key to another table.
+			Using the <many-to-one> tag, we are tell hibernate that many cities (data) from this table only belong to one row in the country table.
+			
+			We add <many-to-one> along with the <one-to-many> tag to make it bidirectional.
+			Bidirectional means we can access element of the country and vice versa. 
+		 -->
 		
 	</class>
 
 </hibernate-mapping>
+
+		<!--  
+			http://levelup.lishman.com/hibernate/associations/many-to-one.php
+			http://www.mkyong.com/hibernate/hibernate-one-to-many-relationship-example/ 
+			https://howtoprogramwithjava.com/hibernate-onetomany-bidirectional-relationship/ 
+		-->
