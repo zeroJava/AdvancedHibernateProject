@@ -1,22 +1,29 @@
 package application.dataClass;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "city")
 public class CityHibernate {
 	
+	
 	private int cityID;
 	private String name;
 	private CountryHibernate country;
-	private int population;
-	//private Date update;
+	
+	
+	private Set<ClientHibernate> clients = new HashSet<ClientHibernate>();
 	
 	public CityHibernate()
 	{
@@ -28,15 +35,9 @@ public class CityHibernate {
 		setName(name);
 	}
 	
-	public CityHibernate(String name, int population)
-	{
-		setName(name);
-		setPopulation(population);
-	}
-	
 	@Id
 	@GeneratedValue
-	@Column(name = "CITY_ID")
+	@Column(name = "ID")
 	public int getcityID()
 	{
 		return cityID;
@@ -63,9 +64,8 @@ public class CityHibernate {
 		this.name = name;
 	}
 	
-	@ManyToOne
-	@Column(name = "COUNTRY")
-	@JoinColumn(name = "NAME")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "COUNTRY") // will be joining to the name column in the country table
 	public CountryHibernate getCountry()
 	{
 		return country;
@@ -76,26 +76,27 @@ public class CityHibernate {
 		this.country = country;
 	}
 	
-	@Column(name = "POPULATION")
-	public int getPopulation()
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CITY") // joining point will the column city_id in the Client database table, in this case points to that table
+	public Set<ClientHibernate> getClients()
 	{
-		return population;
+		return clients;
 	}
-	
-	public void setPopulation(int population)
+
+	public void setClients(Set<ClientHibernate> clients)
 	{
-		this.population = population;
+		this.clients = clients;
 	}
-	
+
 	public String toString()
 	{
-		return (this.cityID + " " + this.name + " " + this.country + " " + this.population);
+		return (this.cityID + " " + this.name + " " + this.country);
 	}
 	
 	public boolean equals(CityHibernate object)
 	{
 		return (this.cityID == object.getcityID() && this.name.equals(object.getName()) 
-					&& this.country.equals(object.getCountry()) && this.population == object.getPopulation() );
+					&& this.country.equals(object.getCountry()) );
 	}
 
 	@Override
@@ -107,7 +108,6 @@ public class CityHibernate {
 		result = prime * result
 				+ ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + population;
 		return result;
 	}
 }

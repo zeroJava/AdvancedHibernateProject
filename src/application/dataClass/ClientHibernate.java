@@ -2,6 +2,7 @@ package application.dataClass;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "client")
 public class ClientHibernate {
+	
 	
 	private int ID;
 	private String firstName;
@@ -74,9 +76,8 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
-	@Column(name = "CITY_ID", nullable = false)
-	@ManyToOne
-	@JoinColumn(name = "CITY_ID")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CITY") // this join point is to column in the Client database table
 	public CityHibernate getCityID()
 	{
 		return cityID;
@@ -87,7 +88,7 @@ public class ClientHibernate {
 		this.cityID = cityID;
 	}
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATED", nullable = false)
 	public Date getDate()
 	{
@@ -125,8 +126,4 @@ public class ClientHibernate {
 		result = prime * result + ((update == null) ? 0 : update.hashCode());
 		return result;
 	}
-	
-	// http://www.javatpoint.com/component-mapping
-	// http://www.javacodegeeks.com/2015/03/hibernate-tutorial.html#relationships
-	// http://java2s.com/Code/Java/Hibernate/MapForClassMemberVariable.htm
 }

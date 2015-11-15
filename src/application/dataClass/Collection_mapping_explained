@@ -9,9 +9,15 @@
  objects, which made and and added to the collection will exist after the mapping is closed
  
  
- https://www.safaribooksonline.com/library/view/just-hibernate/9781449334369/ch04.html
  http://www.java4s.com/hibernate/
  
  index column is used by list when doing persistence collection. It's used to keeping track of data being retrieved
  
  http://www.roseindia.net/hibernate/hibernate4/hibernate_indexcolumn.shtml
+ 
+ http://www.mkyong.com/hibernate/hibernate-one-to-many-relationship-example/ 
+ https://howtoprogramwithjava.com/hibernate-onetomany-bidirectional-relationship/ 
+ 
+ http://www.javatpoint.com/component-mapping
+ http://www.javacodegeeks.com/2015/03/hibernate-tutorial.html#relationships
+ http://java2s.com/Code/Java/Hibernate/MapForClassMemberVariable.htm

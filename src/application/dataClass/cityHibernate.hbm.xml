@@ -11,11 +11,17 @@
 			<generator class="increment"></generator>
 		</id>
 		<property name="name" type="string" column="NAME" />
-		<property name="country" type="string" column="COUNTRY" />
+		<!--  <property name="country" type="string" column="COUNTRY" />  -->
 		<property name="population" type="integer" column="POPULATION" />
 		
+		<set name="clients" table="client">
+			<key column="CITY" />
+			<one-to-many class="ClientHibernate" />
+		</set>
+		
 		<many-to-one name="country" column="COUNTRY" class="CountryHibernate"></many-to-one> 
-		<!-- 
+		
+		<!--
 			name="country": we are referring to the variable in our entity class that is attached to this mapping file, in this case the entity class is CityHibernate.
 			column="COUNTRY": we are referring to the column in our table.
 			class="": is the entity that our variable will be referencing to.
@@ -29,9 +35,3 @@
 	</class>
 
 </hibernate-mapping>
-
-		<!--  
-			http://levelup.lishman.com/hibernate/associations/many-to-one.php
-			http://www.mkyong.com/hibernate/hibernate-one-to-many-relationship-example/ 
-			https://howtoprogramwithjava.com/hibernate-onetomany-bidirectional-relationship/ 
-		-->

@@ -3,6 +3,7 @@ package application.dataClass;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,9 +15,12 @@ import javax.persistence.Table;
 @Table(name = "country")
 public class CountryHibernate {
 	
+	
 	private String name;
+	
+	
 	private String continent;
-	private int population;
+	
 	
 	private Set<CityHibernate> cities = new HashSet<CityHibernate>();
 	
@@ -53,23 +57,13 @@ public class CountryHibernate {
 		this.continent = continent;
 	}
 	
-	@Column(name = "POPULATION")
-	public int getPopulation()
-	{
-		return population;
-	}
-
-	public void setPopulation(int population)
-	{
-		this.population = population;
-	}
-
-	// TODO append the city and country class to make it bidirectional 
-	@OneToMany
-	@JoinColumn(name="COUNTRY") // the "name" indicates the column name which is in the city database table
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="COUNTRY")
 	public Set<CityHibernate> getCities()
 	{
-		/* name indicate the column name we are going to use
+		// the "city id" indicates the column name which is in the city database table
+		/* joincolumn basically means foreign key of this table/entity pointing to the other table/entities public key 
+		 * name indicate the column name we are going to use
 		 * the columns in question, would be the CityHibernate columns because that columns will the connecting point to the entity class/table.
 		 */
 		return cities;
@@ -82,13 +76,12 @@ public class CountryHibernate {
 	
 	public String toString()
 	{
-		return (this.name + " " + this.continent + " " + this.population);
+		return (this.name + " " + this.continent);
 	}
 	
 	public boolean equals(CountryHibernate object)
 	{
-		return (this.name.equals(object.getName()) && this.continent.equals(object.getContinent()) 
-					&& this.population == object.getPopulation() );
+		return (this.name.equals(object.getName()) && this.continent.equals(object.getContinent()) );
 	}
 
 	@Override
@@ -100,7 +93,6 @@ public class CountryHibernate {
 		result = prime * result
 				+ ((continent == null) ? 0 : continent.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + population;
 		return result;
 	}	
 }
