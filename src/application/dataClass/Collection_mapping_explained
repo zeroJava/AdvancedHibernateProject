@@ -5,10 +5,48 @@
  The word persistence in programming means the data still exist, even after the application is closed, by storing the
  data into an database or something like that.
  
- Thus in we are allowed to have java collections like lists, sets and maps whose elements are composed of persistent 
- objects, which made and and added to the collection will exist after the mapping is closed
+ So persistence collection is the ability to store persistence (entity) objects within a java collection like list,
+ set and maps. All entity objects in the java collection will be able to persist, meaning entity elements from the 
+ collection will have their data saved on to the database table like a normal entity (persistent) class.
+ 
+ :note:
+ In other words, hibernate allow us to persist object in java hibernate.
+ 
+ /* -------------------------------------------- | How are things done | ------------------------------------------- */
+ 
+ In hibernate, we use the collection interface as the collect data type to hold our variable, which is our set or list.
+ We must use concrete collection class to make the variable into a list or set.
+ 
+ e.g.
+ 
+ Set<Employee> employees = new Hashset<Employee>(); // correct way of making persistent collection
+ 
+ // Hibernate prefers we make our data type general by using interface
+ // when dealing with collection in hibernate, we must create the collection like this
+ 
+ :note:
+ When dealing with persistence collection. we have to take into account that the entity class exist and mapped to a
+ database table.
+ 
+ Also we have to define how the elements in the said persistence collection is connected to the host persistence class.
+   
  
  
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ http://www.javatpoint.com/component-mapping
  http://www.java4s.com/hibernate/
  
  index column is used by list when doing persistence collection. It's used to keeping track of data being retrieved
@@ -18,6 +56,4 @@
  http://www.mkyong.com/hibernate/hibernate-one-to-many-relationship-example/ 
  https://howtoprogramwithjava.com/hibernate-onetomany-bidirectional-relationship/ 
  
- http://www.javatpoint.com/component-mapping
- http://www.javacodegeeks.com/2015/03/hibernate-tutorial.html#relationships
  http://java2s.com/Code/Java/Hibernate/MapForClassMemberVariable.htm
