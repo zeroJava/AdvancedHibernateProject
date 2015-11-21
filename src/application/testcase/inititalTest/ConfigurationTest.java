@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
-import application.factoryEngine.Factoryengine;
+import application.engine.factoryEngine.Factoryengine;
 
 public class ConfigurationTest {
 

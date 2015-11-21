@@ -1,4 +1,4 @@
-package application.factoryEngine;
+package application.engine.factoryEngine;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;

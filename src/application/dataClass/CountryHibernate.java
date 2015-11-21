@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,10 +16,7 @@ public class CountryHibernate {
 	
 	
 	private String name;
-	
-	
 	private String continent;
-	
 	
 	private Set<CityHibernate> cities = new HashSet<CityHibernate>();
 	
@@ -57,8 +53,7 @@ public class CountryHibernate {
 		this.continent = continent;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="COUNTRY")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
 	public Set<CityHibernate> getCities()
 	{
 		// the "city id" indicates the column name which is in the city database table
