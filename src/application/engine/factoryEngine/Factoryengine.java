@@ -2,9 +2,8 @@ package application.engine.factoryEngine;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+
+import application.engine.configEngine.ConfigurationEngine;
 
 public class Factoryengine {
 
@@ -12,10 +11,8 @@ public class Factoryengine {
 	
 	public static void createSessionFactory() throws HibernateException
 	{
-		
-		Configuration configuration = new Configuration().configure();
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		ConfigurationEngine configuration = new ConfigurationEngine();
+		sessionFactory = configuration.buildSessionFactory();
 	}
 	
 	public static SessionFactory getFactory() throws HibernateException
