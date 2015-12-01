@@ -15,7 +15,9 @@
 		<property name="lastName" type="string" column="LASTNAME"></property>
 		<property name="update" type="timestamp" column="UPDATED"></property>
 		
-		<one-to-one name="cityID" class="CityHibernate"></one-to-one>
+		<many-to-one name="cityID" class="CityHibernate">
+			<column name="CITY" not-null="true"></column>
+		</many-to-one>
 		
 	</class>
 

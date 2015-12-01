@@ -14,12 +14,14 @@
 		<!--  <property name="country" type="string" column="COUNTRY" />  -->
 		<property name="population" type="integer" column="POPULATION" />
 		
+		<many-to-one name="country" class="CountryHibernate">
+			<column name="COUNTRY" not-null="true"></column>
+		</many-to-one> 
+		
 		<set name="clients" table="client">
 			<key column="CITY" />
 			<one-to-many class="ClientHibernate" />
 		</set>
-		
-		<many-to-one name="country" column="COUNTRY" class="CountryHibernate"></many-to-one> 
 		
 		<!--
 			name="country": we are referring to the variable in our entity class that is attached to this mapping file, in this case the entity class is CityHibernate.
