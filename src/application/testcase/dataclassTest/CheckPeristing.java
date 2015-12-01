@@ -1,6 +1,8 @@
 package application.testcase.dataclassTest;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -67,6 +69,24 @@ public class CheckPeristing {
 		jon_wayne.setDate(new Date());
 		
 		session.save(jon_wayne);
+		transaction.commit();
+		session.close();
+	}
+	
+	@Test
+	public void testCollection()
+	{
+		session = factory.openSession();
+		transaction = session.beginTransaction();
+		
+		CityHibernate bercelona = new CityHibernate("BArcelona");
+		bercelona.setCountry(new CountryHibernate("Spain"));
+		
+		Set<ClientHibernate> clients = new HashSet<ClientHibernate>();
+		clients.add(new ClientHibernate("Joh", "Wells"));
+		bercelona.setClients(clients);
+		
+		session.save(bercelona);
 		transaction.commit();
 		session.close();
 	}

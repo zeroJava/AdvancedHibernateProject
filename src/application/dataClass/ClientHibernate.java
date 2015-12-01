@@ -89,7 +89,7 @@ public class ClientHibernate {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "UPDATED", nullable = false)
+	@Column(name = "UPDATED", nullable = true)
 	public Date getDate()
 	{
 		return update;
@@ -112,7 +112,7 @@ public class ClientHibernate {
 					&& this.update.equals(object.getDate()) );
 	}
 
-	@Override
+	/*@Override
 	public int hashCode()
 	{
 		final int prime = 31;
@@ -125,5 +125,5 @@ public class ClientHibernate {
 				+ ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((update == null) ? 0 : update.hashCode());
 		return result;
-	}
+	}*/
 }

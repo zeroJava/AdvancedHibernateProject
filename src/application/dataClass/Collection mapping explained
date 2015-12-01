@@ -10,7 +10,7 @@
  collection will have their data saved on to the database table like a normal entity (persistent) class.
  
  :note:
- In other words, hibernate allow us to persist object in java hibernate.
+ In other words, hibernate allow us to persist object in java collections like list, sets and maps.
  
  /* -------------------------------------------- | How are things done | ------------------------------------------- */
  
