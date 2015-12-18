@@ -14,6 +14,7 @@
 		
 		<set name="cities" table="city">
 			<key column="COUNTRY" />
+			<!-- key column means foreign key -->
 			<one-to-many class="CityHibernate" />
 		</set>
 		

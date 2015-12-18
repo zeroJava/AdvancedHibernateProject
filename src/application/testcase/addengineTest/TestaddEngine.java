@@ -1,17 +1,18 @@
 package application.testcase.addengineTest;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import application.engine.addingDataEngine.AddClientengine;
 import application.engine.factoryEngine.Factoryengine;
 
 public class TestaddEngine {
 
-	/*private SessionFactory factory;
+	private SessionFactory factory;
 	private Session session;
 	private AddClientengine client;
 	
@@ -19,22 +20,12 @@ public class TestaddEngine {
 	public void before()
 	{
 		factory = Factoryengine.getFactory();
-		client = new AddClientengine();
 	}
 	
 	@Test
-	public void testMakingaddengineObjec()
+	public void testAdding_A_Client()
 	{
-		
+		long nu = 015L;
+		client = new AddClientengine("Jonathan", "Blezzus", 25, "75 lingdon street", 01234567); // amend client class, by adding components
 	}
-	
-	@Test
-	public void testAddingDatausingSetter()
-	{
-		client.getData().setData();
-	}
-	
-	@Test
-	public void test*/
-
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +14,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import application.dataClass.components.Addresscl;
+import application.dataClass.components.Phonenumber;
+
 @Entity
 @Table(name = "client")
 public class ClientHibernate {
@@ -21,6 +25,9 @@ public class ClientHibernate {
 	private int ID;
 	private String firstName;
 	private String lastName;
+	private int age;
+	private Addresscl address;
+	private Phonenumber phonenumber;
 	private CityHibernate cityID;
 	private Date update;
 	
@@ -35,10 +42,13 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
-	public ClientHibernate(String firstName, String lastName, CityHibernate cityID)
+	public ClientHibernate(String firstName, String lastName, int age, Addresscl address, Phonenumber phonenumber ,CityHibernate cityID)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.age = age;
+		this.address = address;
+		this.phonenumber = phonenumber;
 		this.cityID = cityID;
 	}
 	
@@ -76,6 +86,39 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
+	@Column(name = "AGE", nullable = false)
+	public int getAge()
+	{
+		return age;
+	}
+
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+
+	@Embedded
+	public Addresscl getAddress()
+	{
+		return address;
+	}
+
+	public void setAddress(Addresscl address)
+	{
+		this.address = address;
+	}
+	
+	@Embedded
+	public Phonenumber getPhonenumber()
+	{
+		return phonenumber;
+	}
+
+	public void setPhonenumber(Phonenumber phonenumber)
+	{
+		this.phonenumber = phonenumber;
+	}
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CITY") // this join point is to column in the Client database table
 	public CityHibernate getCityID()
