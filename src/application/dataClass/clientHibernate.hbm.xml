@@ -16,7 +16,7 @@
 		<property name="update" type="timestamp" column="UPDATED"></property>
 		
 		<many-to-one name="cityID" class="CityHibernate">
-			<column name="CITY" not-null="true"></column>
+			<column name="CITY" not-null="false"></column>
 		</many-to-one>
 		
 	</class>

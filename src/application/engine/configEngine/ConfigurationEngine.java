@@ -6,24 +6,30 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-public class ConfigurationEngine extends Configuration{
+public class ConfigurationEngine {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
+	private Configuration configuration;
 	
 	public ConfigurationEngine()
 	{
-		super();
-		configure();
+		configuration = new Configuration();
+	}
+	
+	public ConfigurationEngine config()
+	{
+		configuration.configure();
+		return this;
 	}
 
 	public SessionFactory buildSessionFactory() throws HibernateException
 	{
-		//ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(super.getProperties()).build();
-		return super.buildSessionFactory(serviceRegistry);
+		//ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(super.getProperties()).build();
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		return configuration.buildSessionFactory(serviceRegistry);
 	}
 	
 	

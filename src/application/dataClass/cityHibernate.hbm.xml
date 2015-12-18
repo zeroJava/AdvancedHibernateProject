@@ -15,7 +15,7 @@
 		<property name="population" type="integer" column="POPULATION" />
 		
 		<many-to-one name="country" class="CountryHibernate">
-			<column name="COUNTRY" not-null="true"></column>
+			<column name="COUNTRY" not-null="false"></column>
 		</many-to-one> 
 		
 		<set name="clients" table="client">

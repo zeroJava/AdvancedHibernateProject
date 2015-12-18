@@ -53,13 +53,13 @@ public class CountryHibernate {
 		this.continent = continent;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "country") // means foreign key in the city-hibernate
 	public Set<CityHibernate> getCities()
 	{
-		// the "city id" indicates the column name which is in the city database table
-		/* joincolumn basically means foreign key of this table/entity pointing to the other table/entities public key 
-		 * name indicate the column name we are going to use
-		 * the columns in question, would be the CityHibernate columns because that columns will the connecting point to the entity class/table.
+		// when association is bitdirectional, then it is better to use mappedby than @joincolumn for one-to-many.
+		
+		/* mappedby = "country" means the location of the variable in the city-hibernate which is attached to the 
+		 * foreign key column for that entity classes table. 
 		 */
 		return cities;
 	}

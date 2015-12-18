@@ -12,6 +12,24 @@
  :note:
  In other words, hibernate allow us to persist object in java collections like list, sets and maps.
  
+ e.g. we could do something like this
+ 
+ 	@Entity
+	@Table(name = "country")
+	public class CountryHibernate {
+	
+	
+		private String name;
+		private String continent;
+	
+		private Set<CityHibernate> cities = new HashSet<CityHibernate>(); // here we are doing persistence collection
+	
+		public CountryHibernate()
+		{
+			//
+		}
+	}
+ 
  /* -------------------------------------------- | How are things done | ------------------------------------------- */
  
  In hibernate, we use the collection interface as the collect data type to hold our variable, which is our set or list.
@@ -30,9 +48,9 @@
  
  Also we have to define how the elements in the said persistence collection is connected to the host persistence class.
    
+ /* ----------------------------------------- | Define association | ----------------------------------------------- */
  
- 
- 
+ When dealing with persistence collections, we have have to define the association between the 
  
  
  

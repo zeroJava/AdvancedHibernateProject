@@ -1,7 +1,6 @@
 package application.testcase.dataclassTest;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -73,20 +72,40 @@ public class CheckPeristing {
 		session.close();
 	}
 	
-	@Test
+	//@Test
 	public void testCollection()
 	{
 		session = factory.openSession();
 		transaction = session.beginTransaction();
 		
-		CityHibernate bercelona = new CityHibernate("BArcelona");
-		bercelona.setCountry(new CountryHibernate("Spain"));
+		CountryHibernate germany = (CountryHibernate) session.load(CountryHibernate.class, "Germany");
 		
-		Set<ClientHibernate> clients = new HashSet<ClientHibernate>();
-		clients.add(new ClientHibernate("Joh", "Wells"));
-		bercelona.setClients(clients);
+		CityHibernate dortmund = new CityHibernate("Coln");
+		dortmund.setCountry(germany);
 		
-		session.save(bercelona);
+		germany.getCities().add(dortmund);
+		
+		session.save(germany);
+		transaction.commit();
+		session.close();
+	}
+	
+	@Test
+	public void testGetdata()
+	{
+		session = factory.openSession();
+		transaction = session.beginTransaction();
+		
+		CountryHibernate germany = (CountryHibernate) session.load(CountryHibernate.class, "Germany");
+		
+		Set<CityHibernate> ger = germany.getCities();
+		System.out.println(ger.size() + " sixe " );
+		
+		for(CityHibernate i : ger)
+		{
+			System.out.println(i.getcityID() + " " + i.getName());
+		}
+		
 		transaction.commit();
 		session.close();
 	}

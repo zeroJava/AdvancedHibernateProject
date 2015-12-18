@@ -11,7 +11,7 @@ public class Factoryengine {
 	
 	public static void createSessionFactory() throws HibernateException
 	{
-		ConfigurationEngine configuration = new ConfigurationEngine();
+		ConfigurationEngine configuration = new ConfigurationEngine().config();
 		sessionFactory = configuration.buildSessionFactory();
 	}
 	

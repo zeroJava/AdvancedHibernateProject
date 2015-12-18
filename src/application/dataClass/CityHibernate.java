@@ -76,7 +76,7 @@ public class CityHibernate {
 		this.country = country;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cityID")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cityID") // mappeedby cityId means foreign key in the entity clienthibernate class
 	public Set<ClientHibernate> getClients()
 	{
 		return clients;
