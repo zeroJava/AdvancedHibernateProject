@@ -7,14 +7,16 @@ import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import application.engine.addingDataEngine.AddClientengine;
+import application.engine.addingDataEngine.AddClient;
 import application.engine.factoryEngine.Factoryengine;
 
-public class TestaddEngine {
+public class TestAddClientEngine {
 
+	@SuppressWarnings("unused")
 	private SessionFactory factory;
+	@SuppressWarnings("unused")
 	private Session session;
-	private AddClientengine client;
+	private AddClient client;
 	
 	@Before
 	public void before()
@@ -25,7 +27,9 @@ public class TestaddEngine {
 	@Test
 	public void testAdding_A_Client()
 	{
-		long nu = 015L;
-		client = new AddClientengine("Jonathan", "Blezzus", 25, "75 lingdon street", 01234567); // amend client class, by adding components
+		client = new AddClient("Jonathan", "Blezzus", 25, "75 lingdon street", 147259964L , 1);
+		client.add();
 	}
+	
+	//@Test
 }

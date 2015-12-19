@@ -42,16 +42,6 @@ public class ClientHibernate {
 		this.lastName = lastName;
 	}
 	
-	public ClientHibernate(String firstName, String lastName, int age, Addresscl address, Phonenumber phonenumber ,CityHibernate cityID)
-	{
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.address = address;
-		this.phonenumber = phonenumber;
-		this.cityID = cityID;
-	}
-	
 	@Id
 	@GeneratedValue
 	public int getID()

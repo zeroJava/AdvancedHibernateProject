@@ -31,7 +31,7 @@ public class Phonenumber {
 		return homePhone;
 	}
 
-	public void setHomePhone(int homePhone)
+	public void setHomePhone(long homePhone)
 	{
 		this.homePhone = homePhone;
 	}
@@ -42,7 +42,7 @@ public class Phonenumber {
 		return mobilePhone;
 	}
 
-	public void setMobilePhone(int mobilePhone)
+	public void setMobilePhone(long mobilePhone)
 	{
 		this.mobilePhone = mobilePhone;
 	}
