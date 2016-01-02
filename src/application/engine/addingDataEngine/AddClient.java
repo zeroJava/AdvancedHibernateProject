@@ -1,5 +1,7 @@
 package application.engine.addingDataEngine;
 
+import java.util.Date;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +13,7 @@ import application.dataClass.components.Addresscl;
 import application.dataClass.components.Phonenumber;
 import application.engine.factoryEngine.Factoryengine;
 
-public class AddClient {
+public class AddClient extends Addengine{
 	
 	private ClientHibernate client;
 	private SessionFactory factory;
@@ -24,30 +26,38 @@ public class AddClient {
 		client.setAddress(new Addresscl(address));
 		client.setPhonenumber(new Phonenumber(homenumber));
 		client.setCityID(getCity(id));
+		client.setDate(new Date());
 	}
 	
-	public void add()
+	public void setSecondAddress(String secondadrees) 
 	{
-		try
+		if(client.getAddress() != null)
 		{
-			factory = Factoryengine.getFactory();
-			session = factory.openSession();
-			Transaction transaction = session.beginTransaction();
-			session.save(client);
-			transaction.commit();
-		}
-		catch (HibernateException e)
-		{
-			System.out.println("ERROR");
-		}
-		finally
-		{
-			session.close();
+			client.getAddress().setSecondAddress(secondadrees);
 		}
 	}
 	
+	public void setMobileNumber(long number)
+	{
+		if(client.getPhonenumber() != null)
+		{
+			client.getPhonenumber().setMobilePhone(number);
+		}
+	}
+	
+	@Override
+	public Object getData()
+	{
+		return client;
+	}
+		
 	private CityHibernate getCity(int id) throws HibernateException
 	{
+		/* When using a method with a throws with an exception class, normally you are forced to surround it with 
+		 * a try-catch block where ever the method is being used. 
+		 * but with HibernateException, it bends the rule, and you are not forced to use getCity inside a 
+		 * try-catch block
+		 */
 		factory = Factoryengine.getFactory();
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
