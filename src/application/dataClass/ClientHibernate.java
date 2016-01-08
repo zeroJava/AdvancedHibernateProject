@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,9 +19,20 @@ import javax.persistence.TemporalType;
 import application.dataClass.components.Addresscl;
 import application.dataClass.components.Phonenumber;
 
+@NamedQueries
+(
+	{
+		@NamedQuery(name = ClientHibernate.clientUsingID, query = "from ClientHibernate ch where ch.ID = :ID"),
+		@NamedQuery(name = ClientHibernate.clientWithNames, query = "from ClientHibernate ch where ch.firstName = :firstName and ch.lastName = :lastName")
+	}
+)
+
 @Entity
 @Table(name = "client")
 public class ClientHibernate {
+	
+	public static final String clientUsingID = "clientUsingID";
+	public static final String clientWithNames = "clientWithName";
 	
 	
 	private int ID;

@@ -10,13 +10,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+@NamedQueries
+(
+	{
+		@NamedQuery(name = CityHibernate.UsingId, query = "from CityHibernate city where city.cityID = :cityID")
+	}
+)
 
 @Entity
 @Table(name = "city")
 public class CityHibernate {
 	
+	public static final String UsingId = "UsingId";
 	
 	private int cityID;
 	private String name;
