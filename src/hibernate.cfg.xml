@@ -9,9 +9,9 @@
  	<session-factory>
  	
  		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/jdata</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/ADhibernate</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">100692</property>
+		<property name="connection.password">1234</property>
 		
 		<!-- JDBC connection pool (use the built-in) 
 		Here we determine how much databases can be connected at a given time -->

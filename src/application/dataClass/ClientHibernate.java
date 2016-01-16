@@ -59,6 +59,7 @@ public class ClientHibernate {
 	@GeneratedValue
 	public int getID()
 	{
+		//@Column(name = "ID", nullable = false) // keep debugging purpose
 		return ID;
 	}
 	

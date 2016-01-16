@@ -32,7 +32,7 @@ public class TestAddCity {
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		Query query = session.getNamedQuery(CountryHibernate.countryUsingName).setParameter("name", "Bulgeria");
+		Query query = session.getNamedQuery(CountryHibernate.countryUsingName).setParameter("name", "PR China");
 		CountryHibernate country = (CountryHibernate) query.uniqueResult();
 		
 		transaction.commit();
