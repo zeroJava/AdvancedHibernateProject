@@ -2,10 +2,11 @@ package application.engine.addingDataEngine;
 
 import application.dataClass.CountryHibernate;
 
-public class AddCountry extends Addengine {
-	
+public class AddCountry extends Addengine
+{
+
 	private CountryHibernate country;
-	
+
 	public AddCountry(String name, String continent)
 	{
 		country = new CountryHibernate(name);
@@ -17,7 +18,7 @@ public class AddCountry extends Addengine {
 	{
 		return country;
 	}
-	
+
 	public CountryHibernate getCountry()
 	{
 		return country;

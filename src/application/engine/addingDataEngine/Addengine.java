@@ -7,11 +7,12 @@ import org.hibernate.Transaction;
 
 import application.engine.factoryEngine.Factoryengine;
 
-public abstract class Addengine {
-	
+public abstract class Addengine
+{
+
 	public Addengine()
 	{
-		
+
 	}
 
 	public void add()
@@ -25,11 +26,11 @@ public abstract class Addengine {
 			transaction.commit();
 			session.close();
 		}
-		catch(HibernateException e)
+		catch (HibernateException e)
 		{
 			System.out.println("Could not add client, due to error in transactional phase ");
 		}
 	}
-	
+
 	public abstract Object getData();
 }

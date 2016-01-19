@@ -4,8 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Phonenumber {
-	
+public class Phonenumber
+{
+
 	private long homePhone;
 	private long mobilePhone;
 
@@ -13,12 +14,12 @@ public class Phonenumber {
 	{
 		//
 	}
-	
+
 	public Phonenumber(long homePhone)
 	{
 		this.homePhone = homePhone;
 	}
-	
+
 	public Phonenumber(long homePhone, long mobilePhone)
 	{
 		this.homePhone = homePhone;

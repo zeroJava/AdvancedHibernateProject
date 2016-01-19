@@ -19,22 +19,17 @@ import javax.persistence.TemporalType;
 import application.dataClass.components.Addresscl;
 import application.dataClass.components.Phonenumber;
 
-@NamedQueries
-(
-	{
-		@NamedQuery(name = ClientHibernate.clientUsingID, query = "from ClientHibernate ch where ch.ID = :ID"),
-		@NamedQuery(name = ClientHibernate.clientWithNames, query = "from ClientHibernate ch where ch.firstName = :firstName and ch.lastName = :lastName")
-	}
-)
+@NamedQueries({ @NamedQuery(name = ClientHibernate.clientUsingID, query = "from ClientHibernate ch where ch.ID = :ID"),
+		@NamedQuery(name = ClientHibernate.clientWithNames, query = "from ClientHibernate ch where ch.firstName = :firstName and ch.lastName = :lastName") })
 
 @Entity
 @Table(name = "client")
-public class ClientHibernate {
-	
+public class ClientHibernate
+{
+
 	public static final String clientUsingID = "clientUsingID";
 	public static final String clientWithNames = "clientWithName";
-	
-	
+
 	private int ID;
 	private String firstName;
 	private String lastName;
@@ -43,53 +38,53 @@ public class ClientHibernate {
 	private Phonenumber phonenumber;
 	private CityHibernate cityID;
 	private Date update;
-	
+
 	public ClientHibernate()
 	{
 		//
 	}
-	
+
 	public ClientHibernate(String firstName, String lastName)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	
+
 	@Id
 	@GeneratedValue
 	public int getID()
 	{
-		//@Column(name = "ID", nullable = false) // keep debugging purpose
+		// @Column(name = "ID", nullable = false) // keep debugging purpose
 		return ID;
 	}
-	
+
 	public void setID(int ID)
 	{
 		this.ID = ID;
 	}
-	
+
 	@Column(name = "FIRSTNAME", nullable = false)
 	public String getFirstName()
 	{
 		return firstName;
 	}
-	
+
 	public void setFirstName(String firstName)
 	{
 		this.firstName = firstName;
 	}
-	
+
 	@Column(name = "LASTNAME", nullable = false)
 	public String getLastName()
 	{
 		return lastName;
 	}
-	
+
 	public void setLastName(String lastName)
 	{
 		this.lastName = lastName;
 	}
-	
+
 	@Column(name = "AGE", nullable = false)
 	public int getAge()
 	{
@@ -111,7 +106,7 @@ public class ClientHibernate {
 	{
 		this.address = address;
 	}
-	
+
 	@Embedded
 	public Phonenumber getPhonenumber()
 	{
@@ -124,53 +119,48 @@ public class ClientHibernate {
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CITY") // this join point is to column in the Client database table
+	@JoinColumn(name = "CITY") // this join point is to column in the Client
+								// database table
 	public CityHibernate getCityID()
 	{
 		return cityID;
 	}
-	
+
 	public void setCityID(CityHibernate cityID)
 	{
 		this.cityID = cityID;
 	}
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATED", nullable = true)
 	public Date getDate()
 	{
 		return update;
 	}
-	
+
 	public void setDate(Date date)
 	{
 		this.update = date;
 	}
-	
+
 	public String toString()
 	{
 		return (this.ID + " " + this.firstName + " " + this.lastName + " " + this.cityID + " " + this.update);
 	}
-	
+
 	public boolean equals(ClientHibernate object)
 	{
-		return ( this.ID == object.getID() && this.firstName.equals(object.getFirstName()) 
-					&& this.lastName.equals(object.getLastName()) && this.cityID == object.getCityID()
-					&& this.update.equals(object.getDate()) );
+		return (this.ID == object.getID() && this.firstName.equals(object.getFirstName())
+				&& this.lastName.equals(object.getLastName()) && this.cityID == object.getCityID()
+				&& this.update.equals(object.getDate()));
 	}
 
-	/*@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ID;
-		result = prime * result + cityID.getcityID();
-		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result
-				+ ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((update == null) ? 0 : update.hashCode());
-		return result;
-	}*/
+	/*
+	 * @Override public int hashCode() { final int prime = 31; int result = 1;
+	 * result = prime * result + ID; result = prime * result +
+	 * cityID.getcityID(); result = prime * result + ((firstName == null) ? 0 :
+	 * firstName.hashCode()); result = prime * result + ((lastName == null) ? 0
+	 * : lastName.hashCode()); result = prime * result + ((update == null) ? 0 :
+	 * update.hashCode()); return result; }
+	 */
 }

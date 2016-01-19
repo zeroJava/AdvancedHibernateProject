@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import application.engine.addingDataEngine.AddCountry;
 
-public class TestAddCountry {
+public class TestAddCountry
+{
 
 	@Test
 	public void test()

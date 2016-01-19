@@ -1,6 +1,7 @@
 package application.main;
 
-public class Mainclass {
+public class Mainclass
+{
 
 	public static void main(String[] args)
 	{

@@ -4,21 +4,22 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Addresscl {
-	
+public class Addresscl
+{
+
 	private String homeAddress;
 	private String secondAddress;
-	
+
 	public Addresscl()
 	{
 		//
 	}
-	
+
 	public Addresscl(String firstAddress)
 	{
 		this.homeAddress = firstAddress;
 	}
-	
+
 	public Addresscl(String firstAddress, String secondAddress)
 	{
 		this.homeAddress = firstAddress;
@@ -45,5 +46,5 @@ public class Addresscl {
 	public void setSecondAddress(String secondAddress)
 	{
 		this.secondAddress = secondAddress;
-	}	
+	}
 }

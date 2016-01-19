@@ -17,53 +17,56 @@ import application.dataClass.CityHibernate;
 import application.dataClass.ClientHibernate;
 import application.engine.factoryEngine.Factoryengine;
 
-public class TestNamequeryClient {
+public class TestNamequeryClient
+{
 
 	private SessionFactory factory;
 	private Session session;
-	
+
 	@Before
 	public void setup()
 	{
 		factory = Factoryengine.getFactory();
 	}
-	
+
 	@Test
 	public void test()
 	{
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Criteria client = session.createCriteria(ClientHibernate.class, "client");
-		//client.createAlias("client.firstName", "firstname");
-		//client.createAlias("client.lastName", "lastname");
-		client.add(Restrictions.eq("client.firstName", "jam")); // eq means equal
+		// client.createAlias("client.firstName", "firstname");
+		// client.createAlias("client.lastName", "lastname");
+		client.add(Restrictions.eq("client.firstName", "jam")); // eq means
+																// equal
 		client.add(Restrictions.eq("client.lastName", "Jimm"));
 		@SuppressWarnings("unchecked")
 		List<ClientHibernate> list = client.list();
-		
-		for(ClientHibernate cl : list)
+
+		for (ClientHibernate cl : list)
 		{
 			System.out.println(cl);
 		}
-		
+
 		transaction.commit();
 		session.close();
 	}
-	
+
 	@Test
 	public void testNamedqueryForClientUsingName()
 	{
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Query client = session.getNamedQuery(ClientHibernate.clientWithNames).setParameter("firstName", "Jam").setParameter("lastName", "Jimm");
+		Query client = session.getNamedQuery(ClientHibernate.clientWithNames).setParameter("firstName", "Jam")
+				.setParameter("lastName", "Jimm");
 		@SuppressWarnings("unchecked")
 		List<ClientHibernate> list = client.list();
-		
-		for(ClientHibernate cl : list)
+
+		for (ClientHibernate cl : list)
 		{
 			System.out.println(cl);
 		}
-		
+
 		transaction.commit();
 		session.close();
 	}
@@ -78,10 +81,10 @@ public class TestNamequeryClient {
 		System.out.println("client address: \n" + client.getAddress().getHomeAddress());
 		transaction.commit();
 		session.close();
-		
+
 		System.out.println();
 	}
-	
+
 	@Test
 	public void testNamequeryForcity()
 	{
@@ -91,7 +94,7 @@ public class TestNamequeryClient {
 		CityHibernate city = (CityHibernate) query.uniqueResult();
 		transaction.commit();
 		session.close();
-		
+
 		System.out.println("city: \n" + city.getcityID() + "\n" + city.getName());
 	}
 }

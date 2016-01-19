@@ -8,13 +8,14 @@ import org.junit.Test;
 
 import application.engine.factoryEngine.Factoryengine;
 
-public class ConfigurationTest {
+public class ConfigurationTest
+{
 
 	@SuppressWarnings("unused")
 	private Configuration configuration;
 	private SessionFactory factory;
 	private Session session;
-	
+
 	@Test
 	public void testConfiguarion()
 	{
@@ -22,12 +23,12 @@ public class ConfigurationTest {
 		{
 			configuration = new Configuration().configure();
 		}
-		catch(HibernateException he)
+		catch (HibernateException he)
 		{
 			System.out.println(he.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void testUtil()
 	{
