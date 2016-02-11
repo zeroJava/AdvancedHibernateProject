@@ -76,7 +76,7 @@ public class TestNamequeryClient
 	{
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Query query = session.getNamedQuery(ClientHibernate.clientUsingID).setInteger("ID", 1);
+		Query query = session.getNamedQuery(ClientHibernate.clientwithID).setInteger("ID", 1);
 		ClientHibernate client = (ClientHibernate) query.uniqueResult();
 		System.out.println("client address: \n" + client.getAddress().getHomeAddress());
 		transaction.commit();

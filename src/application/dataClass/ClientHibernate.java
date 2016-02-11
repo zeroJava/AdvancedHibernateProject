@@ -19,16 +19,19 @@ import javax.persistence.TemporalType;
 import application.dataClass.components.Addresscl;
 import application.dataClass.components.Phonenumber;
 
-@NamedQueries({ @NamedQuery(name = ClientHibernate.clientUsingID, query = "from ClientHibernate ch where ch.ID = :ID"),
-		@NamedQuery(name = ClientHibernate.clientWithNames, query = "from ClientHibernate ch where ch.firstName = :firstName and ch.lastName = :lastName") })
+@NamedQueries({ @NamedQuery(name = ClientHibernate.clientwithID, query = "from ClientHibernate ch where ch.ID = :ID"),
+		@NamedQuery(name = ClientHibernate.clientWithNames, query = "from ClientHibernate ch where ch.firstName = :firstName and ch.lastName = :lastName"),
+		@NamedQuery(name = ClientHibernate.clientLivingInCity, query = "from ClientHibernate as ch inner join ch.cityID as city where city.name = :name")
+})
 
 @Entity
 @Table(name = "client")
 public class ClientHibernate
 {
 
-	public static final String clientUsingID = "clientUsingID";
+	public static final String clientwithID = "clientUsingID";
 	public static final String clientWithNames = "clientWithName";
+	public static final String clientLivingInCity = "clientLivingInCity";
 
 	private int ID;
 	private String firstName;
@@ -119,8 +122,7 @@ public class ClientHibernate
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CITY") // this join point is to column in the Client
-								// database table
+	@JoinColumn(name = "CITY") // this join point is to column in the Client database table
 	public CityHibernate getCityID()
 	{
 		return cityID;
