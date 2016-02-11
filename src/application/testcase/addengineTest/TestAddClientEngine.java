@@ -28,7 +28,7 @@ public class TestAddClientEngine
 		factory = Factoryengine.getFactory();
 		session = factory.openSession();
 		transaction = session.beginTransaction();
-		Query query = session.getNamedQuery(CityHibernate.UsingId).setInteger("cityID", 4);
+		Query query = session.getNamedQuery(CityHibernate.cityWithId).setInteger("cityID", 4);
 		city = (CityHibernate) query.uniqueResult();
 		transaction.commit();
 		session.close();
@@ -46,7 +46,7 @@ public class TestAddClientEngine
 	{
 		session = factory.openSession();
 		transaction = session.beginTransaction();
-		Query query = session.getNamedQuery(CityHibernate.UsingId).setInteger("cityID", 4);
+		Query query = session.getNamedQuery(CityHibernate.cityWithId).setInteger("cityID", 4);
 		city = (CityHibernate) query.uniqueResult();
 		transaction.commit();
 		session.close();
@@ -61,7 +61,7 @@ public class TestAddClientEngine
 	{
 		session = factory.openSession();
 		transaction = session.beginTransaction();
-		Query query = session.getNamedQuery(CityHibernate.UsingId).setInteger("cityID", 4);
+		Query query = session.getNamedQuery(CityHibernate.cityWithId).setInteger("cityID", 4);
 		city = (CityHibernate) query.uniqueResult();
 		transaction.commit();
 		session.close();
@@ -85,7 +85,7 @@ public class TestAddClientEngine
 	{
 		session = factory.openSession();
 		transaction = session.beginTransaction();
-		Query query = session.getNamedQuery(CityHibernate.UsingId).setInteger("cityID", 4);
+		Query query = session.getNamedQuery(CityHibernate.cityWithId).setInteger("cityID", 4);
 		city = (CityHibernate) query.uniqueResult();
 		transaction.commit();
 		session.close();

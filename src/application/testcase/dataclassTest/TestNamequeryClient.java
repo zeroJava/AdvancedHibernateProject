@@ -90,7 +90,7 @@ public class TestNamequeryClient
 	{
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Query query = session.getNamedQuery(CityHibernate.UsingId).setInteger("cityID", 1);
+		Query query = session.getNamedQuery(CityHibernate.cityWithId).setInteger("cityID", 1);
 		CityHibernate city = (CityHibernate) query.uniqueResult();
 		transaction.commit();
 		session.close();

@@ -16,14 +16,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @NamedQueries({
-		@NamedQuery(name = CityHibernate.UsingId, query = "from CityHibernate city where city.cityID = :cityID") })
+		@NamedQuery(name = CityHibernate.cityWithId, query = "from CityHibernate city where city.cityID = :cityID"),
+		@NamedQuery(name = CityHibernate.cityWithName, query = "from CityHibernate city where city.name = :name"),
+		@NamedQuery(name = CityHibernate.citiesInCountry, query = "from CityHibernate city inner join city.country as country where country.name = :name")
+})
 
 @Entity
 @Table(name = "city")
 public class CityHibernate
 {
 
-	public static final String UsingId = "UsingId";
+	public static final String cityWithId = "UsingId";
+	public static final String cityWithName = "CityUsingName";
+	public static final String citiesInCountry = "citiesInCountry";
 
 	private int cityID;
 	private String name;
