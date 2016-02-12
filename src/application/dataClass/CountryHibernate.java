@@ -13,7 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @NamedQueries({
-		@NamedQuery(name = CountryHibernate.countryUsingName, query = "from CountryHibernate country where country.name = :name") })
+		@NamedQuery(name = CountryHibernate.countryUsingName, query = "from CountryHibernate country where country.name = :name"),
+		@NamedQuery(name = CountryHibernate.countriesInContinent, query = "from CountryHibernate country where country.continent = :conti")
+})
 
 @Entity
 @Table(name = "country")
@@ -21,6 +23,7 @@ public class CountryHibernate
 {
 
 	public static final String countryUsingName = "countryUsingName";
+	public static final String countriesInContinent = "contriesInContinent";
 
 	private String name;
 	private String continent;
