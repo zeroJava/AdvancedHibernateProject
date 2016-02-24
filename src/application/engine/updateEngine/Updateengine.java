@@ -1,6 +1,11 @@
 package application.engine.updateEngine;
 
-public class Updateengine
+public abstract class Updateengine
 {
-
+	public void setUpdate()
+	{
+		
+	}
+	
+	public abstract Object getData();
 }

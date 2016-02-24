@@ -28,7 +28,7 @@ public abstract class Addengine
 		}
 		catch (HibernateException e)
 		{
-			System.out.println("Could not add client, due to error in transactional phase ");
+			System.out.println("Could not add, due to error in transactional phase ");
 		}
 	}
 

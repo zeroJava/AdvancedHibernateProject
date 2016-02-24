@@ -33,16 +33,14 @@ public class SearchClientTest
 		Transaction transaction = session.beginTransaction();
 		
 		SearchClient search = new SearchClient(session);
-		List<ClientHibernate> clients = search.clientWithID(2);
+		ClientHibernate clients = search.clientWithID(2);
 		
 		transaction.commit();
 		session.close();
 		
 		System.out.println("test_searchclient_using_id");
-		for(ClientHibernate client : clients)
-		{
-			System.out.println(client);
-		}
+		System.out.println(clients);
+		
 	}
 	
 	@Test

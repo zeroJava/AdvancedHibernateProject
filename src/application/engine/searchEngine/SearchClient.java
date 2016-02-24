@@ -19,10 +19,10 @@ public class SearchClient
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ClientHibernate> clientWithID(int id)
+	public ClientHibernate clientWithID(int id)
 	{
 		Query query = session.getNamedQuery(ClientHibernate.clientwithID).setInteger("ID", id);
-		return query.list();
+		return (ClientHibernate) query.uniqueResult();
 	}
 	
 	@SuppressWarnings("unchecked")

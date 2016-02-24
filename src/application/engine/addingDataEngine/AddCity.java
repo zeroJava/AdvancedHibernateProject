@@ -2,7 +2,6 @@ package application.engine.addingDataEngine;
 
 import java.util.Scanner;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,6 +9,7 @@ import org.hibernate.Transaction;
 import application.dataClass.CityHibernate;
 import application.dataClass.CountryHibernate;
 import application.engine.factoryEngine.Factoryengine;
+import application.engine.searchEngine.SearchCountry;
 
 public class AddCity extends Addengine
 {
@@ -38,8 +38,8 @@ public class AddCity extends Addengine
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 
-		Query data = session.getNamedQuery(CountryHibernate.countryUsingName).setParameter("name", cnty);
-		country = (CountryHibernate) data.uniqueResult();
+		SearchCountry search = new SearchCountry(session);
+		country = search.countryWithName(cnty);
 
 		transaction.commit();
 		session.close();
