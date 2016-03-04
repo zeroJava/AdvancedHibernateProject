@@ -24,7 +24,7 @@ public class UpdateClientTest
 	@Test
 	public void test_updating_details_of__exisitincustomer()
 	{
-		UpdateClient client = new UpdateClient(session, int id);
+		UpdateClient client = new UpdateClient(session, 10);
 		client.setValues();
 		client.setUpdate();
 	}

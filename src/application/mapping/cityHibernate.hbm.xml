@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="basicApplication.dataClass">
+
+	<class name="CityHibernate" table="city">
+		<id name="cityID" type="integer" column="CITY_ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" type="string" column="NAME" />
+		<!--  <property name="country" type="string" column="COUNTRY" />  -->
+		<property name="population" type="integer" column="POPULATION" />
+		
+		<many-to-one name="country" class="CountryHibernate">
+			<column name="COUNTRY" not-null="false"></column>
+		</many-to-one> 
+		
+		<set name="clients" table="client">
+			<key column="CITY" />
+			<one-to-many class="ClientHibernate" />
+		</set>
+		
+		<!--
+			name="country": we are referring to the variable in our entity class that is attached to this mapping file, in this case the entity class is CityHibernate.
+			column="COUNTRY": we are referring to the column in our table.
+			class="": is the entity that our variable will be referencing to.
+			We are not using <property> tag, because this columns in the table is a foreign key to another table.
+			Using the <many-to-one> tag, we are tell hibernate that many cities (data) from this table only belong to one row in the country table.
+			
+			We add <many-to-one> along with the <one-to-many> tag to make it bidirectional.
+			Bidirectional means we can access element of the country and vice versa. 
+		 -->
+		
+	</class>
+
+</hibernate-mapping>

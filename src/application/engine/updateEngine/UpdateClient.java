@@ -40,4 +40,9 @@ public class UpdateClient extends Updateengine
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public void setValues() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping>
+
+	<class name="ClientHibernate" table="client">
+	
+		<id name="ID" type="integer" column="ID">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="firstName" type="string" column="FIRSTNAME" not-null="true"></property>
+		<property name="lastName" type="string" column="LASTNAME" not-null="true"></property>
+		<property name="update" type="timestamp" column="UPDATED"></property>
+		
+		<component name="Addresscl" class="application.dataClass.components.Addresscl">
+		
+			<property name="homeAddress" type="string" column="HOME_ADDRESS" not-null="true"></property>
+			<property name="secondAddress" type="string" column="SECOND_ADDRESS" not-null="false"></property>
+			
+		</component>
+		
+		<component name="Phonenumber" class="application.dataClass.components.Phonenumber">
+		
+			<property name="homePhone" type="integer" column="TELEPHONE" not-null="true"></property>
+			<property name="mobilePhone" type="integer" column="MOBILE" not-null="false"></property>
+			
+		</component>
+		
+		<many-to-one name="cityID" class="CityHibernate">
+			<column name="CITY" not-null="false"></column>
+		</many-to-one>
+		
+	</class>
+
+</hibernate-mapping>
