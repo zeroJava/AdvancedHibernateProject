@@ -27,7 +27,7 @@ public class AddClient extends Addengine
 		client.setAddress(new Addresscl(address));
 		client.setPhonenumber(new Phonenumber(homenumber));
 		client.setCityID(getCity(city));
-		client.setDate(new Date());
+		client.setUpdate(new Date());
 	}
 
 	public void setSecondAddress(String secondadrees)

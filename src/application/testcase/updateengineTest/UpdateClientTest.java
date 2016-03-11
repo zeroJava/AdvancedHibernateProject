@@ -4,6 +4,7 @@ package application.testcase.updateengineTest;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,8 +25,13 @@ public class UpdateClientTest
 	@Test
 	public void test_updating_details_of__exisitincustomer()
 	{
+		session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
 		UpdateClient client = new UpdateClient(session, 10);
-		client.setValues();
-		client.setUpdate();
+		client.updateForename("Jeen");
+		client.updateHomeAddress("82 Buffolo Street");
+		client.setUpdate(session);
+		transaction.commit();
+		session.close();
 	}
 }

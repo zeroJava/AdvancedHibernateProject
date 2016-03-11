@@ -135,12 +135,12 @@ public class ClientHibernate
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATED", nullable = true)
-	public Date getDate()
+	public Date getUpdate()
 	{
 		return update;
 	}
 
-	public void setDate(Date date)
+	public void setUpdate(Date date)
 	{
 		this.update = date;
 	}
@@ -154,7 +154,7 @@ public class ClientHibernate
 	{
 		return (this.ID == object.getID() && this.firstName.equals(object.getFirstName())
 				&& this.lastName.equals(object.getLastName()) && this.cityID == object.getCityID()
-				&& this.update.equals(object.getDate()));
+				&& this.update.equals(object.getUpdate()));
 	}
 
 	/*

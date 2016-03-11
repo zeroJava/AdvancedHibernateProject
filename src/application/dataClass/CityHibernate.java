@@ -82,8 +82,8 @@ public class CityHibernate
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "COUNTRY") // will be joining to the name column in the
-									// country table foreign key
+	@JoinColumn(name = "COUNTRY") // will be joining to the name column in the country table foreign key
+	// pointing to the column named COUNTRY in the city table
 	public CountryHibernate getCountry()
 	{
 		return country;
@@ -94,12 +94,7 @@ public class CityHibernate
 		this.country = country;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cityID") // mappeedby
-																// cityId means
-																// foreign key
-																// in the entity
-																// clienthibernate
-																// class
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cityID") // mappedby cityId means foreign key in the entity clienthibernate class
 	public Set<ClientHibernate> getClients()
 	{
 		return clients;

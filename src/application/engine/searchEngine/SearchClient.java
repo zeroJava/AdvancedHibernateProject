@@ -18,7 +18,6 @@ public class SearchClient
 		this.session = session;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public ClientHibernate clientWithID(int id)
 	{
 		Query query = session.getNamedQuery(ClientHibernate.clientwithID).setInteger("ID", id);

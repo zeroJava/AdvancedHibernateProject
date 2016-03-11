@@ -66,7 +66,7 @@ public class CheckPeristing
 		ClientHibernate jon_wayne = new ClientHibernate("Jon", "Wayne");
 		CityHibernate city = (CityHibernate) session.load(CityHibernate.class, 2);
 		jon_wayne.setCityID(city);
-		jon_wayne.setDate(new Date());
+		jon_wayne.setUpdate(new Date());
 
 		session.save(jon_wayne);
 		transaction.commit();
