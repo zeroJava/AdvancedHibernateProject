@@ -11,21 +11,15 @@ import application.dataClass.ClientHibernate;
 
 public class SearchClient
 {
-	private Session session;
 	
-	public SearchClient(Session session)
-	{
-		this.session = session;
-	}
-	
-	public ClientHibernate clientWithID(int id)
+	public static ClientHibernate clientWithID(Session session, int id)
 	{
 		Query query = session.getNamedQuery(ClientHibernate.clientwithID).setInteger("ID", id);
 		return (ClientHibernate) query.uniqueResult();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ClientHibernate> clientsWithNames(String firstname, String lastname)
+	public static List<ClientHibernate> clientsWithNames(Session session, String firstname, String lastname)
 	{
 		/* Criteria criteria = session.createCriteria(ClientHibernate.class, "client");
 		criteria.add(Restrictions.eq("client.firstName", firstname)); // Restrictions.eq means equals
@@ -37,7 +31,7 @@ public class SearchClient
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ClientHibernate> clientsLivingInCity(String city)
+	public static List<ClientHibernate> clientsLivingInCity(Session session, String city)
 	{
 		Criteria criteria = session.createCriteria(ClientHibernate.class, "client");
 		criteria.createAlias("client.cityID", "city");

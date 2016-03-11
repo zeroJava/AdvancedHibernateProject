@@ -34,8 +34,7 @@ public class SearchCountryTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCountry search = new SearchCountry(session);
-		CountryHibernate country = search.countryWithName(name);
+		CountryHibernate country = SearchCountry.countryWithName(session, name);
 		
 		transaction.commit();
 		session.close();
@@ -52,8 +51,7 @@ public class SearchCountryTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCountry search = new SearchCountry(session);
-		List<CountryHibernate> countries = search.countriesInContient(continent);
+		List<CountryHibernate> countries = SearchCountry.countriesInContient(session, continent);
 		
 		transaction.commit();
 		session.close();
@@ -73,8 +71,7 @@ public class SearchCountryTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCountry search = new SearchCountry(session);
-		CountryHibernate country = search.countryWithName(name);
+		CountryHibernate country = SearchCountry.countryWithName(session, name);
 		
 		transaction.commit();
 		session.close();
@@ -91,8 +88,7 @@ public class SearchCountryTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCountry search = new SearchCountry(session);
-		List<CountryHibernate> countries = search.countriesInContient(continent);
+		List<CountryHibernate> countries = SearchCountry.countriesInContient(session, continent);
 		
 		transaction.commit();
 		session.close();

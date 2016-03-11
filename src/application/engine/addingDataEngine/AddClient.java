@@ -68,8 +68,8 @@ public class AddClient extends Addengine
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCity city = new SearchCity(session);
-		value = city.cityWithID(cityid);
+		SearchCity city = new SearchCity();
+		value = city.cityWithID(session, cityid);
 		
 		transaction.commit();
 		session.close();
@@ -80,7 +80,7 @@ public class AddClient extends Addengine
 			return value;
 		}
 
-		System.out.println("ebetr city anem and country name");
+		System.out.println("\nenter city name and country name");
 		String ci = input.nextLine();
 		String co = input.nextLine();
 		AddCity newcity = new AddCity(ci, co);

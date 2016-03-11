@@ -9,28 +9,28 @@ import application.dataClass.CityHibernate;
 
 public class SearchCity
 {
-	private Session session;
+	//private Session session;
 	
-	public SearchCity(Session session)
+	public SearchCity()
 	{
-		this.session = session;
+		//this.session = session;
 	}
 
-	public CityHibernate cityWithID(int id)
+	public CityHibernate cityWithID(Session session, int id)
 	{
 		Query query = session.getNamedQuery(CityHibernate.cityWithId).setInteger("cityID", id); 
 		return (CityHibernate) query.uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CityHibernate> cityWithName(String name)
+	public List<CityHibernate> cityWithName(Session session, String name)
 	{
 		Query query = session.getNamedQuery(CityHibernate.cityWithName).setParameter("name", name);
 		return query.list();
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CityHibernate> cityInCountry(String country)
+	public List<CityHibernate> cityInCountry(Session session, String country)
 	{
 		Query query = session.getNamedQuery(CityHibernate.citiesInCountry).setParameter("name", country);
 		return query.list();

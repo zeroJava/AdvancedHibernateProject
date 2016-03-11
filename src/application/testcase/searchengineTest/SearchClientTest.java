@@ -32,8 +32,7 @@ public class SearchClientTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchClient search = new SearchClient(session);
-		ClientHibernate clients = search.clientWithID(2);
+		ClientHibernate clients = SearchClient.clientWithID(session, 2);
 		
 		transaction.commit();
 		session.close();
@@ -52,8 +51,7 @@ public class SearchClientTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchClient search = new SearchClient(session);
-		List<ClientHibernate> clients = search.clientsWithNames(firstname, lastname);
+		List<ClientHibernate> clients = SearchClient.clientsWithNames(session, firstname, lastname);
 		
 		transaction.commit();
 		session.close();
@@ -73,8 +71,7 @@ public class SearchClientTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchClient search = new SearchClient(session);
-		List<ClientHibernate> clients = search.clientsLivingInCity(cityname);
+		List<ClientHibernate> clients = SearchClient.clientsLivingInCity(session, cityname);
 		
 		transaction.commit();
 		session.close();

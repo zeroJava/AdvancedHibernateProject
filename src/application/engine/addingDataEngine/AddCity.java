@@ -38,8 +38,7 @@ public class AddCity extends Addengine
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 
-		SearchCountry search = new SearchCountry(session);
-		country = search.countryWithName(cnty);
+		country = SearchCountry.countryWithName(session, cnty);
 
 		transaction.commit();
 		session.close();

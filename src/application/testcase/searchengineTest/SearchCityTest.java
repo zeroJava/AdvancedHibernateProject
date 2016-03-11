@@ -31,8 +31,8 @@ public class SearchCityTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCity search = new SearchCity(session);
-		CityHibernate city = search.cityWithID(4);
+		SearchCity search = new SearchCity();
+		CityHibernate city = search.cityWithID(session, 4);
 		
 		transaction.commit();
 		session.close();
@@ -49,8 +49,8 @@ public class SearchCityTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCity search = new SearchCity(session);
-		List<CityHibernate> cities = search.cityWithName(name);
+		SearchCity search = new SearchCity();
+		List<CityHibernate> cities = search.cityWithName(session, name);
 		
 		transaction.commit();
 		session.close();
@@ -70,8 +70,8 @@ public class SearchCityTest
 		session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		SearchCity search = new SearchCity(session);
-		List<CityHibernate> cities = search.cityInCountry(country);
+		SearchCity search = new SearchCity();
+		List<CityHibernate> cities = search.cityInCountry(session, country);
 		
 		transaction.commit();
 		session.close();
